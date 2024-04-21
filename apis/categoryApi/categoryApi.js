@@ -29,7 +29,7 @@ const categoryApi = (categoriesCollection) => {
     res.send(result);
   });
 
-  return categoryRouter; 
+  return categoryRouter;  
 };
 
 module.exports = categoryApi;
