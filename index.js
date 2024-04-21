@@ -7,6 +7,8 @@ const port = process.env.PORT || 5000;
 
 // import api modules
 const usersApi = require("./apis/usersApi/usersApi");
+const itemApi = require("./apis/itemApi/itemApi");
+const categoryApi = require("./apis/categoryApi/categoryApi");
 
 const corsConfig = {
   origin: "*",
@@ -41,10 +43,16 @@ async function run() {
     const usersCollection = client
       .db("sunwings-restaurant")
       .collection("users");
+    const itemCollection = client.db("sunwings-restaurant").collection("items");
+    const categoriesCollection = client
+      .db("sunwings-restaurant")
+      .collection("categories");
     // collection end here
 
     // apis start here
     app.use("/users", usersApi(usersCollection));
+    app.use("/item", itemApi(itemCollection));
+    app.use("/categories", categoryApi(categoriesCollection));
     // apis end here
 
     // Send a ping to confirm a successful connection
