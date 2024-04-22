@@ -11,7 +11,7 @@ const itemApi = require("./apis/itemApi/itemApi");
 const categoryApi = require("./apis/categoryApi/categoryApi");
 
 const corsConfig = {
-  origin: "*",
+  origin: ["http://localhost:5173", "*"],
   credentials: true,
   optionSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
