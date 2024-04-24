@@ -11,7 +11,7 @@ const itemApi = require("./apis/itemApi/itemApi");
 const categoryApi = require("./apis/categoryApi/categoryApi");
 
 const corsConfig = {
-  origin: ["http://localhost:5173", "*"],
+  origin: ["http://localhost:5173", "https://sunwings-restaurant.web.app", "*"],
   credentials: true,
   optionSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
