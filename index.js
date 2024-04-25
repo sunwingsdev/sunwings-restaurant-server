@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 const usersApi = require("./apis/usersApi/usersApi");
 const itemApi = require("./apis/itemApi/itemApi");
 const categoryApi = require("./apis/categoryApi/categoryApi");
+const paymentApi = require("./apis/paymentApi/paymentApi");
 
 const corsConfig = {
   origin: ["http://localhost:5173", "https://sunwings-restaurant.web.app", "*"],
@@ -47,12 +48,16 @@ async function run() {
     const categoriesCollection = client
       .db("sunwings-restaurant")
       .collection("categories");
+    const paymentsCollection = client
+      .db("sunwings-restaurant")
+      .collection("payments");
     // collection end here
 
     // apis start here
     app.use("/users", usersApi(usersCollection));
     app.use("/item", itemApi(itemCollection));
     app.use("/categories", categoryApi(categoriesCollection));
+    app.use("/payments", paymentApi(paymentsCollection));
     // apis end here
 
     // Send a ping to confirm a successful connection
