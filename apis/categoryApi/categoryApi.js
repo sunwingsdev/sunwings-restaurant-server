@@ -7,7 +7,6 @@ const categoryApi = (categoriesCollection) => {
   //   add item 
   categoryRouter.post("/", async (req, res) => {
     const item = req.body;
-    console.log(req.body);
     const result = await categoriesCollection.insertOne(item);
     res.send(result);
   });

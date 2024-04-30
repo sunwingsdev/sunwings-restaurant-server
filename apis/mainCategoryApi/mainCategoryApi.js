@@ -17,9 +17,9 @@ const mainCategoryApi = (mainCategoriesCollection) => {
     res.send(result);
   });
 
-  //   delete a category 
+  //   delete a category
   mainCategoryRouter.delete("/:id", async (req, res) => {
-    const id = req.params.id; 
+    const id = req.params.id;
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({ message: "Invalid id format" });
     }

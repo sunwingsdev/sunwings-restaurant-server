@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000;
 const usersApi = require("./apis/usersApi/usersApi");
 const itemApi = require("./apis/itemApi/itemApi");
 const categoryApi = require("./apis/categoryApi/categoryApi");
+const mainCategoryApi = require("./apis/mainCategoryApi/mainCategoryApi");
 const paymentApi = require("./apis/paymentApi/paymentApi");
 
 const corsConfig = {
@@ -48,6 +49,9 @@ async function run() {
     const categoriesCollection = client
       .db("sunwings-restaurant")
       .collection("categories");
+    const mainCategoriesCollection = client
+      .db("sunwings-restaurant")
+      .collection("mainCategories");
     const paymentsCollection = client
       .db("sunwings-restaurant")
       .collection("payments");
@@ -57,6 +61,7 @@ async function run() {
     app.use("/users", usersApi(usersCollection));
     app.use("/item", itemApi(itemCollection));
     app.use("/categories", categoryApi(categoriesCollection));
+    app.use("/mainCategories", mainCategoryApi(mainCategoriesCollection));
     app.use("/payments", paymentApi(paymentsCollection));
     // apis end here
 
