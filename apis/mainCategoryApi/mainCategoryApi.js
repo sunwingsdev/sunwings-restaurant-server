@@ -4,8 +4,8 @@ const { ObjectId } = require("mongodb");
 const mainCategoryApi = (mainCategoriesCollection) => {
   const mainCategoryRouter = express.Router();
 
-  //   post category 
-  mainCategoryRouter.post("/", async (req, res) => { 
+  //   post category
+  mainCategoryRouter.post("/", async (req, res) => {
     const mainCategoryInfo = req.body;
     const result = await mainCategoriesCollection.insertOne(mainCategoryInfo);
     res.send(result);
@@ -14,12 +14,13 @@ const mainCategoryApi = (mainCategoriesCollection) => {
   //   get all categories
   mainCategoryRouter.get("/", async (req, res) => {
     const result = await mainCategoriesCollection.find().toArray();
+    console.log(result);
     res.send(result);
   });
 
-  //   delete a category 
+  //   delete a category
   mainCategoryRouter.delete("/:id", async (req, res) => {
-    const id = req.params.id; 
+    const id = req.params.id;
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({ message: "Invalid id format" });
     }
