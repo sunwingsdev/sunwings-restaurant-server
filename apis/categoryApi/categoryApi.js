@@ -4,10 +4,9 @@ const { ObjectId } = require("mongodb");
 const categoryApi = (categoriesCollection) => {
   const categoryRouter = express.Router();
 
-  //   add item
+  //   add item 
   categoryRouter.post("/", async (req, res) => {
     const item = req.body;
-    console.log(req.body);
     const result = await categoriesCollection.insertOne(item);
     res.send(result);
   });

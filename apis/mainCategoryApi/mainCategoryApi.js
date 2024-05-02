@@ -14,7 +14,6 @@ const mainCategoryApi = (mainCategoriesCollection) => {
   //   get all categories
   mainCategoryRouter.get("/", async (req, res) => {
     const result = await mainCategoriesCollection.find().toArray();
-    console.log(result);
     res.send(result);
   });
 
