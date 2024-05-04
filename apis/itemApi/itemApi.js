@@ -4,7 +4,7 @@ const { ObjectId } = require("mongodb");
 const itemApi = (itemCollection) => {
   const itemRouter = express.Router();
 
-  //   add item 
+  //   add item
   itemRouter.post("/", async (req, res) => {
     const item = req.body;
     item.price = parseFloat(item.price);
@@ -54,7 +54,10 @@ const itemApi = (itemCollection) => {
 
   // get items
   itemRouter.get("/", async (req, res) => {
-    const result = await itemCollection.find().toArray();
+    const result = await itemCollection
+      .find()
+      .sort({ createdAt: -1 })
+      .toArray();
     res.send(result);
   });
 
